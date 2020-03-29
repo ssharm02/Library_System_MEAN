@@ -6,7 +6,7 @@ module.exports = mongoose => {
       patronFine: { type: Number, required: false },
       patronCanLend: { type: Boolean, required: true },
       patronIsBanned: { type: Boolean, required: true },
-      patronImage: { data: Buffer, contentType: String, required: true },
+      patronImage: { data: Buffer, contentType: String },
       patronBooksOwned: [
         {
           bookLent: {
@@ -27,7 +27,7 @@ module.exports = mongoose => {
     { timestamps: true }
   );
 
-  schema.method('toJSON', function() {
+  patronSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;

@@ -1,7 +1,9 @@
 module.exports = mongoose => {
   var librarianSchema = mongoose.Schema({
     name: { type: String, required: true },
-    librarianImage: { data: Buffer, contentType: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    librarianImage: { data: Buffer, contentType: String },
     typeof: { type: String, required: true },
     experience: { type: String, required: true },
     education: { type: String, required: true },
@@ -20,7 +22,7 @@ module.exports = mongoose => {
     }
   });
 
-  schema.method('toJSON', function() {
+  librarianSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;

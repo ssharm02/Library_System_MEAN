@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 module.exports = mongoose => {
   var postSchema = mongoose.Schema({
     user: {
@@ -49,7 +52,7 @@ module.exports = mongoose => {
       default: Date.now
     }
   });
-  schema.method('toJSON', function() {
+  postSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;

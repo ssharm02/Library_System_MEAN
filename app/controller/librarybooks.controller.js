@@ -1,5 +1,5 @@
 const db = require('../models');
-const LibraryBooks = db.library;
+const LibraryBooks = db.libraryBookModel;
 
 // Create and Save a new book
 exports.create = (req, res) => {

@@ -9,12 +9,12 @@ module.exports = mongoose => {
       published: { type: Boolean, required: true },
       condition: { type: String, required: true },
       category: { type: String, required: true },
-      bookImage: { data: Buffer, contentType: String, required: true }
+      bookImage: { data: Buffer, contentType: String }
     },
     { timestamps: true }
   );
 
-  schema.method('toJSON', function() {
+  bookSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;
